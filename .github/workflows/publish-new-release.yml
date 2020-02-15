@@ -38,13 +38,13 @@ jobs:
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ env.RELEASE_VERSION }}
 
-      - name: Backport release to dev branch
+      - name: Merge release into dev branch
         uses: thomaseizinger/create-pull-request@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ env.RELEASE_VERSION }}
           base: dev
-          title: Backport release ${{ env.RELEASE_VERSION }} to dev branch
+          title: Merge release ${{ env.RELEASE_VERSION }} into dev branch
           reviewers: ${{ github.event.issue.user.login }}
 
       # if needed, you can checkout the latest master here, build artifacts and publish / deploy them somewhere
