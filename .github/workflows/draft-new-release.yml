@@ -7,7 +7,7 @@ on:
 jobs:
   draft-new-release:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, 'Release version') && endsWith(github.event.issue.labels.*.name, 'release') # only run for issues with a specific title and label
+    if: startsWith(github.event.issue.title, 'Release version') && contains(github.event.issue.labels.*.name, 'release') # only run for issues with a specific title and label
     steps:
       - uses: actions/checkout@v2
 
