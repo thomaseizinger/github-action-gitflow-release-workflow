@@ -10,5 +10,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   Everything since the beginning!
-
-[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/f29bb46e40c323fe0af44dda68c6f60e5b263c64...HEAD

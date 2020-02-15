@@ -22,7 +22,7 @@ jobs:
         run: git checkout -b release/${{ env.RELEASE_VERSION }}
 
       - name: Update changelog
-        uses: thomaseizinger/keep-a-changelog-new-release@v1
+        uses: thomaseizinger/keep-a-changelog-new-release@master
         with:
           version: ${{ env.RELEASE_VERSION }}
 
