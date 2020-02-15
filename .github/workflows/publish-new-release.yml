@@ -20,6 +20,7 @@ jobs:
           VERSION=${BRANCH_NAME#release/}
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
+
       - name: Extract version from branch name (for hotfix branches)
         if: startsWith(github.event.pull_request.head.ref, 'hotfix/')
         run: |
@@ -27,6 +28,7 @@ jobs:
           VERSION=${BRANCH_NAME#hotfix/}
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
+
       - name: Create Release
         uses: actions/create-release@v1
         env:
@@ -35,6 +37,7 @@ jobs:
           ref: master
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ env.RELEASE_VERSION }}
+
       - name: Backport release to dev branch
         uses: thomaseizinger/create-pull-request@v1
         with:
@@ -43,4 +46,5 @@ jobs:
           base: dev
           title: Backport release ${{ env.RELEASE_VERSION }} to dev branch
           reviewers: ${{ github.event.issue.user.login }}
+
       # if needed, you can checkout the latest master here, build artifacts and publish / deploy them somewhere
