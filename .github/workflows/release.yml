@@ -1,0 +1,14 @@
+name: "Release new version"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Extract version from branch (what about hot fixes?)
+      - name: Make new release on GitHub

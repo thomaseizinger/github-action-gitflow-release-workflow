@@ -1,0 +1,53 @@
+name: "Draft new release"
+
+on:
+  issue: [opened]
+
+jobs:
+  draft-new-release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, "Release version") # only run for issues with a specific title
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Extract version from issue title
+        run: |
+          TITLE=${{ github.event.issue.title }}
+          VERSION=${TITLE#Release version }
+
+          echo "::set-env name=RELEASE_VERSION::$VERSION"
+
+      - name: Create release branch
+        run: git checkout -b release/${{ env.RELEASE_VERSION }}
+
+      - name: Update changelog
+        uses: thomaseizinger/keep-a-changelog-new-release@v1
+        with:
+          version: ${{ env.RELEASE_VERSION }}
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "GitHub actions"
+          git config user.email noreply@github.com
+
+      # This step will differ depending on your project setup
+      - name: Bump version in package.json
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }}
+
+      - name: Commit changelog and manifest files
+        run: |
+          git add CHANGELOG.md package.json
+          git commit --message "Prepare release ${{ env.RELEASE_VERSION }}"
+
+      - name: Push new branch
+        run: git push origin release/${{ env.RELEASE_VERSION }}
+
+      - name: Create pull request
+        uses: thomaseizinger/create-pull-request@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release/${{ env.RELEASE_VERSION }}
+          base: master
+          reviewers: ${{ github.event.issue.user.login }}
+          body: |
+            Resolves #${{ github.event.issue.number }}
