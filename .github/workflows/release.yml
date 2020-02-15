@@ -33,13 +33,13 @@ jobs:
   backport:
     name: Backport release branch to dev branch
     runs-on: ubuntu-latest
-      if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
-      steps:
-        - name: Create pull request for merging release branch into dev
-          uses: thomaseizinger/create-pull-request@v1
-            with:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              head: release/${{ env.RELEASE_VERSION }}
-              base: dev
-              title: Backport release ${{ env.RELEASE_VERSION }} to dev branch
-              reviewers: ${{ github.event.issue.user.login }}
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    steps:
+      - name: Create pull request for merging release branch into dev
+        uses: thomaseizinger/create-pull-request@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          head: release/${{ env.RELEASE_VERSION }}
+          base: dev
+          title: Backport release ${{ env.RELEASE_VERSION }} to dev branch
+          reviewers: ${{ github.event.issue.user.login }}
