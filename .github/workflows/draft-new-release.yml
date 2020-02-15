@@ -2,18 +2,18 @@ name: "Draft new release"
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   draft-new-release:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, 'Release version') # only run for issues with a specific title
+    if: startsWith(github.event.issue.title, 'Release version') && endsWith(github.event.issue.labels.*.name, 'release') # only run for issues with a specific title and label
     steps:
       - uses: actions/checkout@v2
 
       - name: Extract version from issue title
         run: |
-          TITLE=${{ github.event.issue.title }}
+          TITLE="${{ github.event.issue.title }}"
           VERSION=${TITLE#Release version }
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
