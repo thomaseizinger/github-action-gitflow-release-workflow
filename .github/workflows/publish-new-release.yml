@@ -1,4 +1,4 @@
-name: "Release new version"
+name: "Publish new release"
 
 on:
   pull_request:
@@ -11,12 +11,20 @@ jobs:
   release:
     name: Publish new release
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    if: github.event.pull_request.merged == true # only merged pull requests must trigger this job
     steps:
-      - name: Extract version from branch name
+      - name: Extract version from branch name (for release branches)
+        if: startsWith(github.event.pull_request.head.ref, 'release/')
         run: |
           BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
           VERSION=${BRANCH_NAME#release/}
+
+          echo "::set-env name=RELEASE_VERSION::$VERSION"
+      - name: Extract version from branch name (for hotfix branches)
+        if: startsWith(github.event.pull_request.head.ref, 'hotfix/')
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          VERSION=${BRANCH_NAME#hotfix/}
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
       - uses: actions/checkout@v2
@@ -25,23 +33,11 @@ jobs:
       - name: Create Release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ env.RELEASE_VERSION }}
-
-  backport:
-    name: Backport release branch to dev branch
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
-    steps:
-      - name: Extract version from branch name
-        run: |
-          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
-          VERSION=${BRANCH_NAME#release/}
-
-          echo "::set-env name=RELEASE_VERSION::$VERSION"
-      - name: Create pull request for merging release branch into dev
+      - name: Backport release to dev branch
         uses: thomaseizinger/create-pull-request@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
