@@ -1,4 +1,5 @@
 language: node
+node_js: 12
 
 branches:
   only:
