@@ -1,0 +1,5 @@
+language: node
+
+branches:
+  only:
+    - release/*
