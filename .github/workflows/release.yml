@@ -35,6 +35,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
     steps:
+      - name: Extract version from branch name
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          VERSION=${BRANCH_NAME#release/}
+
+          echo "::set-env name=RELEASE_VERSION::$VERSION"
       - name: Create pull request for merging release branch into dev
         uses: thomaseizinger/create-pull-request@v1
         with:
