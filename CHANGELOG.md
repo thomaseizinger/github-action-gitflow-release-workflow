@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2020-02-15
+
 ### Added
 
 -   Everything since the beginning!
+
+[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.0.0...HEAD
+
+[1.0.0]: <https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/[command]/usr/bin/git rev-list --max-par...1.0.0>
