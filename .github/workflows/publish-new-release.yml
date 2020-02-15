@@ -27,14 +27,12 @@ jobs:
           VERSION=${BRANCH_NAME#hotfix/}
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
-      - uses: actions/checkout@v2
-        with:
-          ref: master
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          ref: master
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ env.RELEASE_VERSION }}
       - name: Backport release to dev branch
@@ -45,3 +43,4 @@ jobs:
           base: dev
           title: Backport release ${{ env.RELEASE_VERSION }} to dev branch
           reviewers: ${{ github.event.issue.user.login }}
+      # if needed, you can checkout the latest master here, build artifacts and publish / deploy them somewhere
