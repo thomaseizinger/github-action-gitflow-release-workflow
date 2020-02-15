@@ -11,4 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Extract version from branch (what about hot fixes?)
+        run: |
+          echo "Hello world"
       - name: Make new release on GitHub
+        run: |
+          echo "Hello world"

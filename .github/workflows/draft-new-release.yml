@@ -1,7 +1,8 @@
 name: "Draft new release"
 
 on:
-  issue: [opened]
+  issues:
+    types: [opened]
 
 jobs:
   draft-new-release:
