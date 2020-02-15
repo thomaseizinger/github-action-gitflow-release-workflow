@@ -49,6 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ env.RELEASE_VERSION }}
           base: master
+          title: ${{ github.event.issue.title }}
           reviewers: ${{ github.event.issue.user.login }}
           body: |
             Resolves #${{ github.event.issue.number }}
