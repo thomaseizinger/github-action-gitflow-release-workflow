@@ -6,6 +6,7 @@ on:
 
 jobs:
   draft-new-release:
+    name: "Draft a new release"
     runs-on: ubuntu-latest
     if: startsWith(github.event.issue.title, 'Release version') && contains(github.event.issue.labels.*.name, 'release') # only run for issues with a specific title and label
     steps:
@@ -33,7 +34,7 @@ jobs:
 
       # This step will differ depending on your project setup
       - name: Bump version in package.json
-        run: yarn version --new-version ${{ env.RELEASE_VERSION }}
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }} --no-git-tag-version
 
       - name: Commit changelog and manifest files
         run: |

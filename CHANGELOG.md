@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-02-17
+
+### Changed
+
+-   Don't request reviews from pull request author for merging release branch back into dev.
+    The author of the PR is github-actions[bot], we can request a review from them.
+-   Don't make a separate commit for updating the version of package.json
+
 ## [1.1.0] - 2020-02-17
 
 ### Added
@@ -23,7 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Everything since the beginning!
 
-[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.2.0...HEAD
+
+[1.2.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.1.0...1.2.0
 
 [1.1.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.0.0...1.1.0
 
