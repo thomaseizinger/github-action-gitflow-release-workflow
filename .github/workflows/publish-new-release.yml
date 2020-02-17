@@ -30,11 +30,11 @@ jobs:
           echo "::set-env name=RELEASE_VERSION::$VERSION"
 
       - name: Create Release
-        uses: actions/create-release@v1
+        uses: fleskesvor/create-release@feature/support-target-commitish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          ref: master
+          commitish: ${{ github.event.pull_request.merge_commit_sha }}
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ env.RELEASE_VERSION }}
 
