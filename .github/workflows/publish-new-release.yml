@@ -45,6 +45,6 @@ jobs:
           head: release/${{ env.RELEASE_VERSION }}
           base: dev
           title: Merge release ${{ env.RELEASE_VERSION }} into dev branch
-          reviewers: ${{ github.event.issue.user.login }}
+          reviewers: ${{ github.event.pull_request.user.login }}
 
       # if needed, you can checkout the latest master here, build artifacts and publish / deploy them somewhere
