@@ -39,7 +39,7 @@ jobs:
           release_name: ${{ env.RELEASE_VERSION }}
 
       - name: Merge release into dev branch
-        uses: thomaseizinger/create-pull-request@v1
+        uses: thomaseizinger/create-pull-request@1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ env.RELEASE_VERSION }}
