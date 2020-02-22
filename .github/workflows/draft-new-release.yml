@@ -8,7 +8,8 @@ jobs:
   draft-new-release:
     name: "Draft a new release"
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, 'Release version') && contains(github.event.issue.labels.*.name, 'release') # only run for issues with a specific title and label
+    # Only run for issues with a specific title and label. Not strictly required but makes finding the release issue again later easier.
+    if: startsWith(github.event.issue.title, 'Release version') && contains(github.event.issue.labels.*.name, 'release')
     steps:
       - uses: actions/checkout@v2
 
@@ -62,7 +63,7 @@ jobs:
           # We are claiming things here based on the `publish-new-release.yml` workflow.
           # You should obviously adopt it to say the truth depending on your release workflow :)
           body: |
-            Hi ${{ github.event.issue.user.login }}!
+            Hi @${{ github.event.issue.user.login }}!
 
             This PR was created in response to this release issue: #${{ github.event.issue.number }}.
             I've updated the changelog and bumped the versions in the manifest files in this commit: ${{ steps.make-commit.outputs.commit }}.
