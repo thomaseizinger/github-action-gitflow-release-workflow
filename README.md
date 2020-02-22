@@ -18,7 +18,7 @@ The automation will do the following things:
 
 ## Design
 
-I've written a blog post that describes the technical design in detail here: https://blog.eizinger.io/12274/using-github-actions-to-automate-gitflow-style-releases
+I've written a blog post that describes the technical design in detail here: https://blog.eizinger.io/12274/using-github-actions-and-gitflow-to-automate-your-release-process
 
 The idea of these workflows is to automate all the tedious aspects of releases while still allowing manual intervention if necessary and control over crucial aspects.
 
