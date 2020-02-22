@@ -9,7 +9,10 @@ jobs:
     name: "Draft a new release"
     runs-on: ubuntu-latest
     # Only run for issues with a specific title and label. Not strictly required but makes finding the release issue again later easier.
-    if: startsWith(github.event.issue.title, 'Release version') && contains(github.event.issue.labels.*.name, 'release')
+    # There is also a whitelist that you may want to use to restrict, who can trigger this workflow.
+    if: startsWith(github.event.issue.title, 'Release version') && \
+        contains(github.event.issue.labels.*.name, 'release') && \
+        contains(['thomaseizinger'], github.event.issue.user.login)
     steps:
       - uses: actions/checkout@v2
 
