@@ -34,8 +34,7 @@ jobs:
       # Hence, we close it here "manually"
       - name: Close release issue
         run: |
-
-          RELEASE_ISSUE_URL=$(curl https://api.github.com/repos/${{ github.repository }}/issues?labels=release&state=open | jq -r '.[1].url')
+          RELEASE_ISSUE_URL=$(curl https://api.github.com/repos/${{ github.repository }}/issues\?labels=release\&state=open | jq -r '.[0].url')
 
           curl \
             -X PATCH \
