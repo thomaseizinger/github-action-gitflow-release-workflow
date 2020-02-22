@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-02-22
+
+### Added
+
+-   A whitelist of which users can trigger the release workflow.
+
 ## [1.3.0] - 2020-02-22
+
+### Added
+
+-   Automatically close the release issue after the release branch was merged.
 
 ## [1.2.0] - 2020-02-17
 
@@ -33,7 +43,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Everything since the beginning!
 
-[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.3.0...HEAD
+[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.4.0...HEAD
+
+[1.4.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.3.0...1.4.0
 
 [1.3.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.2.0...1.3.0
 
