@@ -48,10 +48,10 @@ jobs:
       - name: Create pull request
         uses: thomaseizinger/create-pull-request@1.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           head: release/${{ github.event.inputs.version }}
           base: master
-          title: ${{ github.event.issue.title }}
+          title: Release version ${{ github.event.inputs.version }}
           reviewers: ${{ github.actor }} # By default, we request a review from the person who triggered the workflow.
           # Write a nice message to the user.
           # We are claiming things here based on the `publish-new-release.yml` workflow.
