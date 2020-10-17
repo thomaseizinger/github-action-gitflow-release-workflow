@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2020-10-17
+
 ### Changed
 
 -   Use `workflow_dispatch` instead of opening an issue as the initial trigger of the release.
-Not only is this more convenient to use, it also fixes a security vulnerability that may have allowed users without write access to execute arbitrary code within the context of the repositories GitHub action.
+    Not only is this more convenient to use, it also fixes a security vulnerability that may have allowed users without write access to execute arbitrary code within the context of the repositories GitHub action.
 
 ## [1.4.0] - 2020-02-22
 
@@ -48,7 +50,9 @@ Not only is this more convenient to use, it also fixes a security vulnerability 
 
 -   Everything since the beginning!
 
-[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/2.0.0...HEAD
+
+[2.0.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.4.0...2.0.0
 
 [1.4.0]: https://github.com/thomaseizinger/github-action-gitflow-release-workflow/compare/1.3.0...1.4.0
 
