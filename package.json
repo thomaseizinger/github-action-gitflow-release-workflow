@@ -3,11 +3,5 @@
   "version": "1.4.0",
   "main": "index.js",
   "author": "Thomas Eizinger <thomas@eizinger.io>",
-  "license": "MIT",
-  "scripts": {
-    "test": "jest"
-  },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "license": "MIT"
 }
