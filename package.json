@@ -1,13 +1,7 @@
 {
   "name": "github-action-gitflow-release-workflow",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "main": "index.js",
   "author": "Thomas Eizinger <thomas@eizinger.io>",
-  "license": "MIT",
-  "scripts": {
-    "test": "jest"
-  },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "license": "MIT"
 }
