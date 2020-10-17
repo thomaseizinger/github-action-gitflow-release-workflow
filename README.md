@@ -7,7 +7,7 @@ You are welcome to use it for inspiration for your own release workflows or mayb
 
 If you are using the workflows as they are in this repository, there are only two manual steps for releasing a new version:
 
-1. Create a ticket that is titled "Release version x.y.z" and label it with "release".
+1. Trigger the "Draft new release" workflow through the "Actions" tab.
 2. Merge the PR that is created for you.
 
 The automation will do the following things:
@@ -19,6 +19,9 @@ The automation will do the following things:
 ## Design
 
 I've written a blog post that describes the technical design in detail here: https://blog.eizinger.io/12274/using-github-actions-and-gitflow-to-automate-your-release-process
+
+NOTE: The workflows and actions in this repository were changed since the blogpost was published.
+Please see the CHANGELOG.md for a detailed summary.
 
 The idea of these workflows is to automate all the tedious aspects of releases while still allowing manual intervention if necessary and control over crucial aspects.
 
