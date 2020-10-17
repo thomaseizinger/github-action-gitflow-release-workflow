@@ -29,21 +29,6 @@ jobs:
 
           echo "::set-env name=RELEASE_VERSION::$VERSION"
 
-      # Unfortunately, GitHub doesn't trigger events for actions that have been taken by a GitHub action.
-      # This means we cannot use `Fixes #issue_number.` in the body of the PR to close the release issue after the branch is merged.
-      # Hence, we close it here "manually"
-      - name: Close release issue
-        run: |
-          RELEASE_ISSUE_URL=$(curl https://api.github.com/repos/${{ github.repository }}/issues\?labels=release\&state=open | jq -r '.[0].url')
-
-          curl \
-            -X PATCH \
-            -H 'Accept: application/vnd.github.v3+json' \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            $RELEASE_ISSUE_URL \
-            -d '{"state":"closed"}'
-
       - name: Create Release
         uses: thomaseizinger/create-release@1.0.0
         env:
